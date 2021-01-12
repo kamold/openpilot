@@ -18,7 +18,7 @@ class CarState(CarStateBase):
       self.update = self.update_pq
       if CP.transmissionType == TRANS.automatic:
         self.shifter_values = can_define.dv["Getriebe_1"]['Waehlhebelposition__Getriebe_1_']
-    else:
+    #else:
       # Configure for MQB network messaging (default)
       #self.get_can_parser = self.get_mqb_can_parser
       #self.get_cam_can_parser = self.get_mqb_cam_can_parser
