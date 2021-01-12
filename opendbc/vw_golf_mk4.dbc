@@ -1115,28 +1115,6 @@ BO_ 208 Lenkhilfe_3: 8 XXX
  SG_ LH3_BLWValid : 45|1@1+ (1,0) [0|1] "" XXX
  SG_ LH3_Lenkungstyp : 46|2@1+ (1,0) [0|3] "" XXX\
 
-BO_ 919 LDW_02: 8 Front_Multifunction_Camera_MQB
- SG_ LDW_Gong : 12|2@1+ (1,0) [0|3] ""  Kombi_MQB
- SG_ LDW_SW_Warnung_links : 14|1@1+ (1,0) [0|1] ""  XXX
- SG_ LDW_SW_Warnung_rechts : 15|1@1+ (1,0) [0|1] ""  XXX
- SG_ LDW_Texte : 16|4@1+ (1,0) [0|15] ""  Kombi_MQB
- SG_ LDW_Seite_DLCTLC : 20|1@1+ (1,0) [0|1] ""  XXX
- SG_ LDW_Lernmodus : 21|3@1+ (1,0) [0|7] ""  HUD_MQB
- SG_ LDW_Anlaufsp_VLR : 24|4@1+ (1,0) [0|15] "" Vector__XXX
- SG_ LDW_Vib_Amp_VLR : 28|4@1+ (1,0) [0|15] "" Vector__XXX
- SG_ LDW_Anlaufzeit_VLR : 32|4@1+ (1,0) [0|15] "" Vector__XXX
- SG_ LDW_SW_Info_rechts : 36|2@1+ (1,0) [0|3] "" XXX
- SG_ LDW_SW_Info_links : 38|2@1+ (1,0) [0|3] "" XXX
- SG_ LDW_DLC : 40|8@1+ (0.01,-1.25) [-1.25|1.25] "Unit_Meter"  XXX
- SG_ LDW_TLC : 48|5@1+ (0.1,0) [0|3] "Unit_Secon"  XXX
- SG_ LDW_Warnung_links : 56|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ LDW_Warnung_rechts : 57|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ LDW_Codierinfo_fuer_VLR : 58|2@1+ (1,0) [0|3] "" Vector__XXX
- SG_ LDW_Frontscheibenheizung_aktiv : 60|1@1+ (1,0) [0|1] ""  Klima_MQB
- SG_ LDW_Status_LED_gelb : 61|1@1+ (1,0) [0|1] ""  Parkhilfe_MQB,Kombi_MQB
- SG_ LDW_Status_LED_gruen : 62|1@1+ (1,0) [0|1] ""  Parkhilfe_MQB,Kombi_MQB
- SG_ LDW_KD_Fehler : 63|1@1+ (1,0) [0|1] ""  XXX
-
 BO_ 173 Getriebe_11: 8 Getriebe_DQ_Hybrid_MQB
  SG_ CHECKSUM : 0|8@1+ (1,0) [0|255] ""  Gateway_MQB,Motor_Diesel_MQB,Motor_Hybrid_MQB,Motor_Otto_MQB
  SG_ COUNTERXX : 8|4@1+ (1,0) [0|15] ""  Gateway_MQB,Motor_Diesel_MQB,Motor_Hybrid_MQB,Motor_Otto_MQB
