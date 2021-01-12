@@ -18,15 +18,15 @@ class CarState(CarStateBase):
       self.update = self.update_pq
       if CP.transmissionType == TRANS.automatic:
         self.shifter_values = can_define.dv["Getriebe_1"]['Waehlhebelposition__Getriebe_1_']
-    #else:
-      # Configure for MQB network messaging (default)
-      #self.get_can_parser = self.get_mqb_can_parser
-      #self.get_cam_can_parser = self.get_mqb_cam_can_parser
-      #self.update = self.update_mqb
-      #if CP.transmissionType == TRANS.automatic:
-      #  self.shifter_values = can_define.dv["Getriebe_11"]['GE_Fahrstufe']
-      #elif CP.transmissionType == TRANS.direct:
-      #  self.shifter_values = can_define.dv["EV_Gearshift"]['GearPosition']
+    else:
+       Configure for MQB network messaging (default)
+      self.get_can_parser = self.get_mqb_can_parser
+      self.get_cam_can_parser = self.get_mqb_cam_can_parser
+      self.update = self.update_mqb
+      if CP.transmissionType == TRANS.automatic:
+        self.shifter_values = can_define.dv["Getriebe_11"]['GE_Fahrstufe']
+      elif CP.transmissionType == TRANS.direct:
+        self.shifter_values = can_define.dv["EV_Gearshift"]['GearPosition']
 
     self.buttonStates = BUTTON_STATES.copy()
 
@@ -108,8 +108,8 @@ class CarState(CarStateBase):
 
     # Consume SWA (Lane Change Assist) relevant info from factory LDW message
     # to pass along to the blind spot radar controller
-    self.ldw_lane_warning_left = bool(cam_cp.vl["LDW_02"]["LDW_SW_Warnung_links"])
-    self.ldw_lane_warning_right = bool(cam_cp.vl["LDW_02"]["LDW_SW_Warnung_rechts"])
+    self.ldw_lane_warning_left = False #bool(cam_cp.vl["LDW_02"]["LDW_SW_Warnung_links"])
+    self.ldw_lane_warning_right = False #bool(cam_cp.vl["LDW_02"]["LDW_SW_Warnung_rechts"])
     self.ldw_side_dlc_tlc = bool(cam_cp.vl["LDW_02"]["LDW_Seite_DLCTLC"])
     self.ldw_dlc = cam_cp.vl["LDW_02"]["LDW_DLC"]
     self.ldw_tlc = cam_cp.vl["LDW_02"]["LDW_TLC"]
@@ -180,7 +180,7 @@ class CarState(CarStateBase):
     # to pass along to the blind spot radar controller
     self.ldw_lane_warning_left = False #bool(cam_cp.vl["LDW_02"]["LDW_SW_Warnung_links"])
     self.ldw_lane_warning_right = False #bool(cam_cp.vl["LDW_02"]["LDW_SW_Warnung_rechts"])
-    self.ldw_side_dlc_tlc = bool(cam_cp.vl["LDW_02"]["LDW_Seite_DLCTLC"])
+    self.ldw_side_dlc_tlc = False #bool(cam_cp.vl["LDW_02"]["LDW_Seite_DLCTLC"])
     self.ldw_dlc = cam_cp.vl["LDW_02"]["LDW_DLC"]
     self.ldw_tlc = cam_cp.vl["LDW_02"]["LDW_TLC"]
     
