@@ -27,42 +27,6 @@ BS_:
 
 BU_: XXX
 
-BO_ 919 LDW_02: 8 Front_Multifunction_Camera_MQB
- SG_ LDW_Gong : 12|2@1+ (1,0) [0|3] ""  Kombi_MQB
- SG_ LDW_SW_Warnung_links : 14|1@1+ (1,0) [0|1] ""  XXX
- SG_ LDW_SW_Warnung_rechts : 15|1@1+ (1,0) [0|1] ""  XXX
- SG_ LDW_Texte : 16|4@1+ (1,0) [0|15] ""  Kombi_MQB
- SG_ LDW_Seite_DLCTLC : 20|1@1+ (1,0) [0|1] ""  XXX
- SG_ LDW_Lernmodus : 21|3@1+ (1,0) [0|7] ""  HUD_MQB
- SG_ LDW_Anlaufsp_VLR : 24|4@1+ (1,0) [0|15] "" Vector__XXX
- SG_ LDW_Vib_Amp_VLR : 28|4@1+ (1,0) [0|15] "" Vector__XXX
- SG_ LDW_Anlaufzeit_VLR : 32|4@1+ (1,0) [0|15] "" Vector__XXX
- SG_ LDW_SW_Info_rechts : 36|2@1+ (1,0) [0|3] "" XXX
- SG_ LDW_SW_Info_links : 38|2@1+ (1,0) [0|3] "" XXX
- SG_ LDW_DLC : 40|8@1+ (0.01,-1.25) [-1.25|1.25] "Unit_Meter"  XXX
- SG_ LDW_TLC : 48|5@1+ (0.1,0) [0|3] "Unit_Secon"  XXX
- SG_ LDW_Warnung_links : 56|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ LDW_Warnung_rechts : 57|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ LDW_Codierinfo_fuer_VLR : 58|2@1+ (1,0) [0|3] "" Vector__XXX
- SG_ LDW_Frontscheibenheizung_aktiv : 60|1@1+ (1,0) [0|1] ""  Klima_MQB
- SG_ LDW_Status_LED_gelb : 61|1@1+ (1,0) [0|1] ""  Parkhilfe_MQB,Kombi_MQB
- SG_ LDW_Status_LED_gruen : 62|1@1+ (1,0) [0|1] ""  Parkhilfe_MQB,Kombi_MQB
- SG_ LDW_KD_Fehler : 63|1@1+ (1,0) [0|1] ""  XXX
-
-BO_ 173 Getriebe_11: 8 Getriebe_DQ_Hybrid_MQB
- SG_ CHECKSUM : 0|8@1+ (1,0) [0|255] ""  Gateway_MQB,Motor_Diesel_MQB,Motor_Hybrid_MQB,Motor_Otto_MQB
- SG_ COUNTERXX : 8|4@1+ (1,0) [0|15] ""  Gateway_MQB,Motor_Diesel_MQB,Motor_Hybrid_MQB,Motor_Otto_MQB
- SG_ GE_MMom_Soll_02 : 12|10@1+ (1,-509) [-509|509] "Unit_NewtoMeter"  Gateway_MQB,Motor_Diesel_MQB,Motor_Hybrid_MQB,Motor_Otto_MQB
- SG_ GE_MMom_Vorhalt_02 : 22|10@1+ (1,-509) [-509|509] "Unit_NewtoMeter"  Gateway_MQB,Motor_Diesel_MQB,Motor_Hybrid_MQB,Motor_Otto_MQB
- SG_ GE_Uefkt : 32|10@1+ (0.1,0) [0|102.2] ""  Gateway_MQB,Motor_Diesel_MQB,Motor_Hybrid_MQB,Motor_Otto_MQB
- SG_ GE_Fahrstufe : 42|5@1+ (1,0) [0|31] ""  Gateway_MQB,Motor_Diesel_MQB,Motor_Hybrid_MQB,Motor_Otto_MQB
- SG_ GE_Schaltvorgang : 47|1@1+ (1,0) [0|1] ""  Gateway_MQB,Motor_Diesel_MQB,Motor_Hybrid_MQB,Motor_Otto_MQB
- SG_ GE_Status_Kupplung : 54|2@1+ (1,0) [0|3] ""  Gateway_MQB,Motor_Diesel_MQB,Motor_Hybrid_MQB,Motor_Otto_MQB
- SG_ GE_MMom_Status : 56|2@1+ (1,0) [0|3] ""  Gateway_MQB,Motor_Diesel_MQB,Motor_Hybrid_MQB,Motor_Otto_MQB
- SG_ GE_Freig_MMom_Vorhalt : 58|1@1+ (1,0) [0|1] ""  Gateway_MQB,Motor_Diesel_MQB,Motor_Hybrid_MQB,Motor_Otto_MQB
- SG_ GE_Verbot_Ausblendung : 59|1@1+ (1,0) [0|1] ""  Gateway_MQB,Motor_Hybrid_MQB,Motor_Otto_MQB
- SG_ GE_Zielgang : 60|4@1+ (1,0) [0|15] ""  Gateway_MQB,Motor_Diesel_MQB,Motor_Hybrid_MQB,Motor_Otto_MQB
-
 BO_ 1394 ZAS_1: 2 XXX
  SG_ Fehlerspeichereintrag__ZAS_ : 15|1@1+ (1,0) [0|0] "" XXX
  SG_ Frei_ZAS_1_3 : 8|7@1+ (1,0) [0|0] "" XXX
@@ -1149,7 +1113,43 @@ BO_ 208 Lenkhilfe_3: 8 XXX
  SG_ LH3_BLW : 32|12@1+ (0.15,0) [0|615] "" XXX
  SG_ LH3_BLWSign : 44|1@1+ (1,0) [0|1] "" XXX
  SG_ LH3_BLWValid : 45|1@1+ (1,0) [0|1] "" XXX
- SG_ LH3_Lenkungstyp : 46|2@1+ (1,0) [0|3] "" XXX
+ SG_ LH3_Lenkungstyp : 46|2@1+ (1,0) [0|3] "" XXX\
+
+BO_ 919 LDW_02: 8 Front_Multifunction_Camera_MQB
+ SG_ LDW_Gong : 12|2@1+ (1,0) [0|3] ""  Kombi_MQB
+ SG_ LDW_SW_Warnung_links : 14|1@1+ (1,0) [0|1] ""  XXX
+ SG_ LDW_SW_Warnung_rechts : 15|1@1+ (1,0) [0|1] ""  XXX
+ SG_ LDW_Texte : 16|4@1+ (1,0) [0|15] ""  Kombi_MQB
+ SG_ LDW_Seite_DLCTLC : 20|1@1+ (1,0) [0|1] ""  XXX
+ SG_ LDW_Lernmodus : 21|3@1+ (1,0) [0|7] ""  HUD_MQB
+ SG_ LDW_Anlaufsp_VLR : 24|4@1+ (1,0) [0|15] "" Vector__XXX
+ SG_ LDW_Vib_Amp_VLR : 28|4@1+ (1,0) [0|15] "" Vector__XXX
+ SG_ LDW_Anlaufzeit_VLR : 32|4@1+ (1,0) [0|15] "" Vector__XXX
+ SG_ LDW_SW_Info_rechts : 36|2@1+ (1,0) [0|3] "" XXX
+ SG_ LDW_SW_Info_links : 38|2@1+ (1,0) [0|3] "" XXX
+ SG_ LDW_DLC : 40|8@1+ (0.01,-1.25) [-1.25|1.25] "Unit_Meter"  XXX
+ SG_ LDW_TLC : 48|5@1+ (0.1,0) [0|3] "Unit_Secon"  XXX
+ SG_ LDW_Warnung_links : 56|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ LDW_Warnung_rechts : 57|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ LDW_Codierinfo_fuer_VLR : 58|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ LDW_Frontscheibenheizung_aktiv : 60|1@1+ (1,0) [0|1] ""  Klima_MQB
+ SG_ LDW_Status_LED_gelb : 61|1@1+ (1,0) [0|1] ""  Parkhilfe_MQB,Kombi_MQB
+ SG_ LDW_Status_LED_gruen : 62|1@1+ (1,0) [0|1] ""  Parkhilfe_MQB,Kombi_MQB
+ SG_ LDW_KD_Fehler : 63|1@1+ (1,0) [0|1] ""  XXX
+
+BO_ 173 Getriebe_11: 8 Getriebe_DQ_Hybrid_MQB
+ SG_ CHECKSUM : 0|8@1+ (1,0) [0|255] ""  Gateway_MQB,Motor_Diesel_MQB,Motor_Hybrid_MQB,Motor_Otto_MQB
+ SG_ COUNTERXX : 8|4@1+ (1,0) [0|15] ""  Gateway_MQB,Motor_Diesel_MQB,Motor_Hybrid_MQB,Motor_Otto_MQB
+ SG_ GE_MMom_Soll_02 : 12|10@1+ (1,-509) [-509|509] "Unit_NewtoMeter"  Gateway_MQB,Motor_Diesel_MQB,Motor_Hybrid_MQB,Motor_Otto_MQB
+ SG_ GE_MMom_Vorhalt_02 : 22|10@1+ (1,-509) [-509|509] "Unit_NewtoMeter"  Gateway_MQB,Motor_Diesel_MQB,Motor_Hybrid_MQB,Motor_Otto_MQB
+ SG_ GE_Uefkt : 32|10@1+ (0.1,0) [0|102.2] ""  Gateway_MQB,Motor_Diesel_MQB,Motor_Hybrid_MQB,Motor_Otto_MQB
+ SG_ GE_Fahrstufe : 42|5@1+ (1,0) [0|31] ""  Gateway_MQB,Motor_Diesel_MQB,Motor_Hybrid_MQB,Motor_Otto_MQB
+ SG_ GE_Schaltvorgang : 47|1@1+ (1,0) [0|1] ""  Gateway_MQB,Motor_Diesel_MQB,Motor_Hybrid_MQB,Motor_Otto_MQB
+ SG_ GE_Status_Kupplung : 54|2@1+ (1,0) [0|3] ""  Gateway_MQB,Motor_Diesel_MQB,Motor_Hybrid_MQB,Motor_Otto_MQB
+ SG_ GE_MMom_Status : 56|2@1+ (1,0) [0|3] ""  Gateway_MQB,Motor_Diesel_MQB,Motor_Hybrid_MQB,Motor_Otto_MQB
+ SG_ GE_Freig_MMom_Vorhalt : 58|1@1+ (1,0) [0|1] ""  Gateway_MQB,Motor_Diesel_MQB,Motor_Hybrid_MQB,Motor_Otto_MQB
+ SG_ GE_Verbot_Ausblendung : 59|1@1+ (1,0) [0|1] ""  Gateway_MQB,Motor_Hybrid_MQB,Motor_Otto_MQB
+ SG_ GE_Zielgang : 60|4@1+ (1,0) [0|15] ""  Gateway_MQB,Motor_Diesel_MQB,Motor_Hybrid_MQB,Motor_Otto_MQB
 
 BO_ 978 Lenkhilfe_2: 8 XXX
  SG_ LH2_Checksumme : 0|8@1+ (1,0) [0|255] "" XXX
