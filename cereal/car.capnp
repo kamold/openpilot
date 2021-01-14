@@ -118,6 +118,10 @@ struct CarEvent @0x9b1657f34caf3ad3 {
     focusRecoverActiveDEPRECATED @86;
     neosUpdateRequiredDEPRECATED @88;
     modelLagWarningDEPRECATED @93;
+    pqTimebombWarn @94;
+    pqTimebombBypassing @95;
+    pqTimebombBypassed @96;
+    pqTimebombTERMINAL @97;
   }
 }
 
@@ -157,6 +161,7 @@ struct CarState {
   stockAeb @30 :Bool;
   stockFcw @31 :Bool;
   espDisabled @32 :Bool;
+  stopSteering @37 :Bool; #Boolian for stopSteering
 
   # cruise state
   cruiseState @10 :CruiseState;
