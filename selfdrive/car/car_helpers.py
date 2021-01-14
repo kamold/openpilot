@@ -25,13 +25,10 @@ def get_startup_event(car_recognized, controller_available, hw_type):
     event = EventName.startupNoCar
   elif car_recognized and not controller_available:
     event = EventName.startupNoControl
-<<<<<<< HEAD
   elif EON and "letv" not in open("/proc/cmdline").read():
     event = EventName.startupOneplus
-=======
   # elif hw_type == HwType.greyPanda:
   #   event = EventName.startupGreyPandaDEPRECATED
->>>>>>> 8a6af654... Revert "grey panda is unsupported"
   return event
 
 
