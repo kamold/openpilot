@@ -28,12 +28,8 @@ class CarInterface(CarInterfaceBase):
   @staticmethod
   def get_params(candidate, fingerprint=gen_empty_fingerprint(), has_relay=False, car_fw=None):
     ret = CarInterfaceBase.get_std_params(candidate, fingerprint, has_relay)
-<<<<<<< HEAD
-=======
-
     # VW port is a community feature, since we don't own one to test
     ret.communityFeature = True
->>>>>>> 8a6af654... Revert "grey panda is unsupported"
 
     ret.enableCamera = True  # Stock camera detection doesn't apply to VW
     ret.carName = "volkswagen"
