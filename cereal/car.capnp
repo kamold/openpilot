@@ -102,6 +102,8 @@ struct CarEvent @0x9b1657f34caf3ad3 {
     cameraMalfunction @92;
 
     startupOneplus @82;
+    startupGreyPandaDEPRECATED @98;
+    
 
     gasUnavailableDEPRECATED @3;
     dataNeededDEPRECATED @16;
