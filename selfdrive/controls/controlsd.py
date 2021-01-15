@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import os
 from cereal import car, log
+from common.hardware import HARDWARE
 from common.numpy_fast import clip
 from common.realtime import sec_since_boot, config_realtime_process, Priority, Ratekeeper, DT_CTRL
 from common.profiler import Profiler
@@ -20,7 +21,6 @@ from selfdrive.controls.lib.alertmanager import AlertManager
 from selfdrive.controls.lib.vehicle_model import VehicleModel
 from selfdrive.controls.lib.planner import LON_MPC_STEP
 from selfdrive.locationd.calibrationd import Calibration
-from selfdrive.hardware import HARDWARE
 
 LDW_MIN_SPEED = 31 * CV.MPH_TO_MS
 LANE_DEPARTURE_THRESHOLD = 0.1
@@ -52,7 +52,7 @@ class Controls:
 
     self.sm = sm
     if self.sm is None:
-      self.sm = messaging.SubMaster(['thermal', 'health', 'model', 'liveCalibration', 'frontFrame',
+      self.sm = messaging.SubMaster(['thermal', 'health', 'frame', 'model', 'liveCalibration',
                                      'dMonitoringState', 'plan', 'pathPlan', 'liveLocationKalman'])
 
     self.can_sock = can_sock
@@ -131,7 +131,7 @@ class Controls:
     self.sm['dMonitoringState'].awarenessStatus = 1.
     self.sm['dMonitoringState'].faceDetected = False
 
-    self.startup_event = get_startup_event(car_recognized, controller_available, hw_type)
+    self.startup_event = get_startup_event(car_recognized, controller_available)
 
     if not sounds_available:
       self.events.add(EventName.soundsUnavailable, static=True)
@@ -141,8 +141,8 @@ class Controls:
       self.events.add(EventName.communityFeatureDisallowed, static=True)
     if not car_recognized:
       self.events.add(EventName.carUnrecognized, static=True)
-    if hw_type == HwType.whitePanda:
-      self.events.add(EventName.whitePandaUnsupportedDEPRECATED, static=True)
+    #if hw_type == HwType.whitePanda:
+    #  self.events.add(EventName.whitePandaUnsupported, static=True)
 
     # controlsd is driven by can recv, expected at 100Hz
     self.rk = Ratekeeper(100, print_delay_threshold=None)
@@ -205,8 +205,7 @@ class Controls:
 
     if self.can_rcv_error or (not CS.canValid and self.sm.frame > 5 / DT_CTRL):
       self.events.add(EventName.canError)
-    if (self.sm['health'].safetyModel != self.CP.safetyModel and self.sm.frame > 2 / DT_CTRL) or \
-       self.mismatch_counter >= 200:
+    if self.mismatch_counter >= 200:
       self.events.add(EventName.controlsMismatch)
     if not self.sm.alive['plan'] and self.sm.alive['pathPlan']:
       # only plan not being received: radar not communicating
@@ -218,16 +217,19 @@ class Controls:
     if not self.sm['liveLocationKalman'].sensorsOK and not NOSENSOR:
       if self.sm.frame > 5 / DT_CTRL:  # Give locationd some time to receive all the inputs
         self.events.add(EventName.sensorDataInvalid)
-    if not self.sm['liveLocationKalman'].gpsOK and (self.distance_traveled > 1000):
-      # Not show in first 1 km to allow for driving out of garage. This event shows after 5 minutes
-      if not (SIMULATION or NOSENSOR):  # TODO: send GPS in carla
-        self.events.add(EventName.noGps)
+    #if not self.sm['liveLocationKalman'].gpsOK and (self.distance_traveled > 1000):
+    #  # Not show in first 1 km to allow for driving out of garage. This event shows after 5 minutes
+    #  if not (SIMULATION or NOSENSOR):  # TODO: send GPS in carla
+    #    self.events.add(EventName.noGps)
     if not self.sm['pathPlan'].paramsValid:
       self.events.add(EventName.vehicleModelInvalid)
     if not self.sm['liveLocationKalman'].posenetOK:
       self.events.add(EventName.posenetInvalid)
     if not self.sm['liveLocationKalman'].deviceStable:
       self.events.add(EventName.deviceFalling)
+    if not self.sm['frame'].recoverState < 2:
+      # counter>=2 is active
+      self.events.add(EventName.focusRecoverActive)
     if not self.sm['plan'].radarValid:
       self.events.add(EventName.radarFault)
     if self.sm['plan'].radarCanError:
@@ -236,11 +238,8 @@ class Controls:
       self.events.add(EventName.relayMalfunction)
     if self.sm['plan'].fcw:
       self.events.add(EventName.fcw)
-    if not self.sm.alive['frontFrame'] and (self.sm.frame > 5 / DT_CTRL) and not SIMULATION:
-      self.events.add(EventName.cameraMalfunction)
-
-    if self.sm['model'].frameDropPerc > 20 and not SIMULATION:
-      self.events.add(EventName.modeldLagging)
+    if self.sm['model'].frameDropPerc > 1 and (not SIMULATION):
+        self.events.add(EventName.modeldLagging)
 
     # Only allow engagement with brake pressed when stopped behind another stopped car
     if CS.brakePressed and self.sm['plan'].vTargetFuture >= STARTING_TARGET_SPEED \
@@ -448,10 +447,9 @@ class Controls:
     if CC.hudControl.rightLaneDepart or CC.hudControl.leftLaneDepart:
       self.events.add(EventName.ldw)
 
-    clear_event = ET.WARNING if ET.WARNING not in self.current_alert_types else None
     alerts = self.events.create_alerts(self.current_alert_types, [self.CP, self.sm, self.is_metric])
     self.AM.add_many(self.sm.frame, alerts, self.enabled)
-    self.AM.process_alerts(self.sm.frame, clear_event)
+    self.AM.process_alerts(self.sm.frame)
     CC.hudControl.visualAlert = self.AM.visual_alert
 
     if not self.read_only:
@@ -460,7 +458,7 @@ class Controls:
       self.pm.send('sendcan', can_list_to_can_capnp(can_sends, msgtype='sendcan', valid=CS.canValid))
 
     force_decel = (self.sm['dMonitoringState'].awarenessStatus < 0.) or \
-                  (self.state == State.softDisabling)
+                    (self.state == State.softDisabling)
 
     steer_angle_rad = (CS.steeringAngle - self.sm['pathPlan'].angleOffset) * CV.DEG_TO_RAD
 
