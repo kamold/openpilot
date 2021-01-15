@@ -253,23 +253,22 @@ EVENTS: Dict[int, Dict[str, Union[Alert, Callable[[Any, messaging.SubMaster, boo
       Priority.LOWER, VisualAlert.none, AudibleAlert.none, 0., 0., 15.),
   },
 
-<<<<<<< HEAD
   EventName.startupOneplus: {
     ET.PERMANENT: Alert(
       "WARNING: Original EON deprecated",
       "Device will no longer update",
-=======
-  EventName.startupGreyPandaDEPRECATED: {
-    ET.PERMANENT: Alert(
-      "WARNING: Grey panda is deprecated",
-      "Upgrade to comma two or black panda",
->>>>>>> 8a6af654... Revert "grey panda is unsupported"
       AlertStatus.userPrompt, AlertSize.mid,
       Priority.LOWER, VisualAlert.none, AudibleAlert.none, 0., 0., 15.),
   },
 
-<<<<<<< HEAD
-=======
+  EventName.startupGreyPandaDEPRECATED: {
+    ET.PERMANENT: Alert(
+      "WARNING: Grey panda is deprecated",
+      "Upgrade to comma two or black panda",
+      AlertStatus.userPrompt, AlertSize.mid,
+      Priority.LOWER, VisualAlert.none, AudibleAlert.none, 0., 0., 15.),
+  },
+
   EventName.invalidGiraffeToyotaDEPRECATED: {
     ET.PERMANENT: Alert(
       "Unsupported Giraffe Configuration",
@@ -287,7 +286,7 @@ EVENTS: Dict[int, Dict[str, Union[Alert, Callable[[Any, messaging.SubMaster, boo
     ET.NO_ENTRY: NoEntryAlert("Unsupported Hardware"),
   },
 
->>>>>>> 8a6af654... Revert "grey panda is unsupported"
+
   EventName.invalidLkasSetting: {
     ET.PERMANENT: Alert(
       "Stock LKAS is turned on",
