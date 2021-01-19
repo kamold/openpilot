@@ -148,8 +148,8 @@ cdef class CANDefine():
   def __init__(self, dbc_name):
     self.dbc_name = dbc_name
     self.dbc = dbc_lookup(dbc_name)
-    if not self.dbc:
-      raise RuntimeError("Can't lookup" + dbc_name)
+    #if not self.dbc:
+    #  raise RuntimeError("Can't lookup" + dbc_name)
       
     num_vals = self.dbc[0].num_vals
 
